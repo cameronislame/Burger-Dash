@@ -579,7 +579,7 @@ void physics()
 
     }
     if ( oil.pos[0] + oil.width < 0) {
-        oil.pos[0] = burger.pos[0] + 1000;
+        oil.pos[0] = burger.pos[0] + 1400;
     }
 
     if(Check2(burger,enemy)){

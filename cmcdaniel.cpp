@@ -55,6 +55,39 @@ int time_since_mouse_move(const bool get)
     return time(NULL) - mouse_timer;
 }
 
+void renderShieldArt(Square burger, Level lev) {
+    int tx = lev.tilesize[0];
+    int ty = lev.tilesize[1];
+    Flt dd = lev.ftsz[0];
+    Flt offy = lev.tile_base;
+
+    for (int j = 0; j < lev.ncols; j++) {
+        for (int i = 0; i < lev.nrows; i++) {
+            int row = lev.nrows - 1 - i; 
+            int col = j;
+            if (lev.shieldArtArr[row][col] == '.') {
+                glColor3ub(0, 0, 0);
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+            if (lev.shieldArtArr[row][col] == '+') {
+                glColor3ub(255, 255, 255);
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+            if (lev.shieldArtArr[row][col] == '@') {
+                glColor3ub(95, 205, 228); // Converted from hex 5FCDE4
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+            if (lev.shieldArtArr[row][col] == '#') {
+                glColor3ub(80, 142, 184); // Converted from hex 508EB8
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+            if (lev.shieldArtArr[row][col] == '$') {
+                glColor3ub(155, 173, 183); // Converted from hex 9BADB7
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+        }
+    }
+}
 
 void renderHealth(Square burger, Level lev) {
     int tx = lev.tilesize[0];

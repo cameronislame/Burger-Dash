@@ -115,6 +115,8 @@ Level knifeBlockArtSprite(3.0f, 3.0f, "knifeBlock.xpm");
 Level healthArtSprite(5.0f, 5.0f, "health.xpm");
 Level gameOverSprite(5.0f, 5.0f, "gameOver.xpm");
 Level exitSprite(5.0f, 5.0f, "exit.xpm");
+Level shieldSprite(5.0f, 5.0f, "shield.xpm");
+Square shieldSquare;
 Square exitSquare;
 Square gameOverSquare;
 Square exitHelper;
@@ -176,7 +178,6 @@ void initObj()
     knife3.height = 5.0;
     knife3.active = true;
     // Initialize shield power-up
-    shieldPowerUp.init();
 }
 //extern bool CheckCollision2(Square burger, Enemy enemy) ;
 
@@ -201,6 +202,7 @@ int main() {
     exitSquare.pos[0] = 1000;
     exitSquare.pos[1] = 0;
     exitSquare.active = false;
+    shieldPowerUp.init();
     //Main loop
     int done = 0;
     while (!done) {
@@ -532,6 +534,7 @@ void physics()
     if (checkCollision(burger, hp_pack)) {
         healthbar.health = 255;
         hp_pack.active = false;
+        gl.score += 1;
     }
     // burger physics
     // If burger is off the ground, it is subject to gravity
@@ -578,6 +581,9 @@ void physics()
     if (enemy.pos[0] + enemy.width < 0) {
         enemy.init();
 
+    }
+    if (shieldPowerUp.pos[0] + shieldPowerUp.width < 0) {
+        shieldPowerUp.pos[0] = burger.pos[0] + 3000;
     }
 
     if (spike.pos[0] + spike.width < 0) {
@@ -708,18 +714,13 @@ void render()
         renderHealth(healthSquare, healthArtSprite);
     }
 
-    // Render shield power-up
+    // Render shield power-up 
     if (!shieldPowerUp.isActivated()) {
-        glColor3ub(50, 100, 200);
-        glPushMatrix();
-        glTranslatef(shieldPowerUp.pos[0], shieldPowerUp.pos[1], 0.0f);
-        glBegin(GL_QUADS);
-        glVertex2f(-shieldPowerUp.width, -shieldPowerUp.height);
-        glVertex2f(-shieldPowerUp.width, shieldPowerUp.height);
-        glVertex2f(shieldPowerUp.width, shieldPowerUp.height);
-        glVertex2f(shieldPowerUp.width, -shieldPowerUp.height);
-        glEnd();
-        glPopMatrix();
+        shieldSquare.width = 5.0f;
+        shieldSquare.height = 5.0f;
+        shieldSquare.pos[0] = shieldPowerUp.pos[0];
+        shieldSquare.pos[1] = shieldPowerUp.pos[1];
+        renderShieldArt(shieldSquare, shieldSprite);
     }
 
     if(exitSquare.active) {

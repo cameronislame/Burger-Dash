@@ -88,13 +88,13 @@ void display_border(int xres, int yres)
 
 void ShieldPowerUp::init() {
     // Initial position
-    pos[0] = 550.0f;
+    pos[0] = 2550.0f;
     // y-position
     pos[1] = 100.0f + height;
 
     // Initial velocity
     // x-velocity
-    vel[0] = -60.0f;
+    vel[0] = -20.0f;
     vel[1] = 0.0f;
 
     // Set width and height of the power-up

@@ -84,6 +84,8 @@ Level::Level(int tileSizeX, int tileSizeY, std::string fileName) {
                     gameOverArtArr[nrows][j] = line[j];
                 if (imageName == "exit.xpm")
                     exitArtArr[nrows][j] = line[j];
+                if (imageName == "shield.xpm")
+                    shieldArtArr[nrows][j] = line[j];
             }
             ++nrows;
         }

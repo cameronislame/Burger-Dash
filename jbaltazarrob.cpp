@@ -115,10 +115,10 @@ float total_render_function_calls(){
 }
 void init_hpPack()
 {
-    hp_pack.pos[0] = 1650.0;
+    hp_pack.pos[0] = 1635.0;
     hp_pack.pos[1] = 350;
     hp_pack.width = 20.0;
-    hp_pack.vel[0] = -5.0;
+    hp_pack.vel[0] = lvlspeed;
     hp_pack.height = 20.0;
     hp_pack.active = true;
 

@@ -566,7 +566,7 @@ void physics()
       }*/
 
     if (enemy.pos[0] + enemy.width < 0) {
-        enemy.init();
+        enemy.pos[0] = burger.pos[0] + 1200;
 
     }
     if (shieldPowerUp.pos[0] + shieldPowerUp.width < 0) {
@@ -574,12 +574,12 @@ void physics()
     }
 
     if (spike.pos[0] + spike.width < 0) {
-        spike.pos[0] = burger.pos[0] + 1000;
+        spike.pos[0] = burger.pos[0] + 1200;
         spike.pointClaimed = false;
 
     }
     if ( oil.pos[0] + oil.width < 0) {
-        oil.pos[0] = burger.pos[0] + 1500;
+        oil.pos[0] = burger.pos[0] + 1000;
     }
 
     if(Check2(burger,enemy)){
@@ -626,7 +626,7 @@ void render()
     for(int i = 0; i<50; i++){
         // render the level while burger is in motion
         if(burger.vel[0] >= 0.0){
-            camera[0] += 2.0/lev.tilesize[0] * (0.05 / gl.delay);
+            camera[0] += 3.3/lev.tilesize[0] * (0.05 / gl.delay);
             if (camera[0] < 0.0) {
                 camera[0] = 0.0;
             }

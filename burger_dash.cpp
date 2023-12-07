@@ -46,33 +46,6 @@ extern double timeDiff(struct timespec *start, struct timespec *end);
 extern void timeCopy(struct timespec *dest, struct timespec *source);
 
 
-/*
-   class Global {
-   public:
-   int xres, yres;
-   double physicsCountdown;
-   double timeSpan;
-   unsigned int keys[65536];
-   int score;
-   bool show_border;
-   bool display_credits;
-   bool CheckCollision2;
-   double delay;
-   bool display_statistics;
-   time_t begin;
-   time_t key_checker;
-   Global() {
-   show_border = false;
-   display_credits = false;
-   display_statistics = false;
-   xres = 1200;
-   yres = 600;
-   score = 0;
-   delay = 0.1;
-   time(&begin);
-   time(&key_checker);
-   }
-   } gl; */
 Global gl;
 
 class Obstacle {
@@ -116,6 +89,8 @@ Level healthArtSprite(5.0f, 5.0f, "health.xpm");
 Level gameOverSprite(5.0f, 5.0f, "gameOver.xpm");
 Level exitSprite(5.0f, 5.0f, "exit.xpm");
 Level shieldSprite(5.0f, 5.0f, "shield.xpm");
+Level victorySprite(5.0f, 5.0f, "victory.xpm");
+Square victorySquare;
 Square shieldSquare;
 Square exitSquare;
 Square gameOverSquare;
@@ -128,6 +103,7 @@ Square knifeSquare3;
 Square knifeBlockSquare;
 Square healthSquare;
 ShieldPowerUp shieldPowerUp;
+bool victory = false;
 //Function prototypes
 void init_opengl(void); 
 void physics(void);
@@ -224,7 +200,7 @@ int main() {
 
 
         if (!startScreenActive) {
-            if (!gameOver){
+            if (!gameOver && !victory){
                 while (physicsCountdown >= physicsRate) {
                     physics();
                     physicsCountdown -= physicsRate;
@@ -234,7 +210,6 @@ int main() {
             }
             if (gameOver) {
                 glClear(GL_COLOR_BUFFER_BIT);
-                //renderGameOver(gl.xres,gl.yres,x11,gl);
                 gameOverSquare.pos[0] = gl.xres/2 - 2.5 * 58.0f;
                 gameOverSquare.pos[1] = gl.yres/2 - 2.5 * 35.0f;
                 gameOverSquare.width = 5.0f;
@@ -242,6 +217,17 @@ int main() {
                 renderGameOverArt(gameOverSquare, gameOverSprite);
                 x11.swapBuffers();
             }
+
+            if (victory == true) {
+                glClear(GL_COLOR_BUFFER_BIT);
+                victorySquare.pos[0] = gl.xres/2 - 2.5 * 100.0f;
+                victorySquare.pos[1] = gl.yres/2 - 2.5 * 29.0f;
+                victorySquare.width = 5.0f;
+                victorySquare.height = 5.0f;
+                renderVictoryArt(victorySquare, victorySprite);
+                x11.swapBuffers();
+            
+            }          
         }
     }
 
@@ -561,10 +547,10 @@ void physics()
 
     // if they collide, send burger back a bit
     if(checkCollision (burger, exitSquare)) {
-        std::cout << "we did it" << endl;
-        exit(1);
+        victory = true;
+
     }
-    
+
     if(checkCollision(burger, spike)) {
         //spike.vel[0] = 10;
 
@@ -731,6 +717,7 @@ void render()
         renderExitArt(exitHelper, exitSprite);
 
     }
+
 
     unsigned int c = 0x00ffff44;
     Rect r;

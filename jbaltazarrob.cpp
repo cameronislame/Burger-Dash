@@ -59,8 +59,8 @@ Level::Level(int tileSizeX, int tileSizeY, std::string fileName) {
     FILE *fpi = fopen(imageName.c_str(), "r");
     if (fpi) {
         nrows=0;
-        char line[100];
-        while (fgets(line, 100, fpi) != NULL) {
+        char line[120];
+        while (fgets(line, 120, fpi) != NULL) {
             removeCrLf(line);
             int slen = strlen(line);
             ncols = slen;
@@ -86,6 +86,8 @@ Level::Level(int tileSizeX, int tileSizeY, std::string fileName) {
                     exitArtArr[nrows][j] = line[j];
                 if (imageName == "shield.xpm")
                     shieldArtArr[nrows][j] = line[j];
+                if (imageName == "victory.xpm")
+                    victoryArtArr[nrows][j] = line[j];
             }
             ++nrows;
         }

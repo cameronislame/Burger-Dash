@@ -23,6 +23,7 @@ class Level {
     unsigned char shieldArtArr[9][9];
     unsigned char gameOverArtArr[35][58];
     unsigned char exitArtArr[29][13];
+    unsigned char victoryArtArr[29][100];
     std::string imageName;
     int nrows, ncols;
     int tilesize[2];

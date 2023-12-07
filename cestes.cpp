@@ -94,7 +94,6 @@ bool Check3(Square burger, Oil oil) {
 
 // Definition of the collision detection function
 bool Check2(Square burger, Enemy enemy) {
-    //bool enemyCollisionOccurred = false;
     int leftBurger = burger.pos[0] - burger.width;
     int rightBurger = burger.pos[0] + burger.width;
     int topBurger = burger.pos[1] - burger.height;
@@ -111,10 +110,8 @@ bool Check2(Square burger, Enemy enemy) {
     if (bottomBurger < topEnemy || bottomEnemy < topBurger)
         return false;
 
-    // If there is a collision, set burger's velocity to 0
     return true;
 }
-
 // Implement the Enemy class as needed
 // For example, rendering the enemy
 void renderEnemy() {

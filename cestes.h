@@ -44,8 +44,8 @@ public:
         init();
     }
     void init() {
-        width = 18.0f;
-        height = 32.0f;
+        width = 18.0f * 2.5;
+        height = 32.0f * 2.5;
         pos[0] = 1200.0f;
         pos[1] = 0.0f;
         vel[0] = -5.0f;

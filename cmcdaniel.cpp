@@ -55,6 +55,104 @@ int time_since_mouse_move(const bool get)
     return time(NULL) - mouse_timer;
 }
 
+void renderVictoryArt(Square burger, Level lev) {
+    int tx = lev.tilesize[0];
+    int ty = lev.tilesize[1];
+    Flt dd = lev.ftsz[0];
+    Flt offy = lev.tile_base;
+
+    for (int j = 0; j < lev.ncols; j++) {
+        for (int i = 0; i < lev.nrows; i++) {
+            int row = lev.nrows - 1 - i; 
+            int col = j;
+            if (lev.victoryArtArr[row][col] == '.') {
+                glColor3ub(55, 28, 59); // Converted from hex 371C3B
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '+') {
+                glColor3ub(204, 76, 80); // Converted from hex CC4C50
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '@') {
+                glColor3ub(207, 125, 122); // Converted from hex CF7D7A
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '#') {
+                glColor3ub(159, 44, 92); // Converted from hex 9F2C5C
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '$') {
+                glColor3ub(208, 80, 134); // Converted from hex D05086
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '%') {
+                glColor3ub(101, 54, 100); // Converted from hex 653664
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '&') {
+                glColor3ub(165, 92, 165); // Converted from hex A55CA5
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '*') {
+                glColor3ub(165, 112, 58); // Converted from hex A5703A
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '=') {
+                glColor3ub(186, 134, 80); // Converted from hex BA8650
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '-') {
+                glColor3ub(212, 208, 137); // Converted from hex D4D089
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == ';') {
+                glColor3ub(182, 176, 54); // Converted from hex B6B036
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '>') {
+                glColor3ub(143, 90, 36); // Converted from hex 8F5A24
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == ',') {
+                glColor3ub(203, 55, 55); // Converted from hex CB3737
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '\'') {
+                glColor3ub(172, 50, 50); // Converted from hex AC3232
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == ')') {
+                glColor3ub(95, 55, 36); // Converted from hex 5F3724
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '!') {
+                glColor3ub(78, 134, 40); // Converted from hex 4E8628
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+
+            if (lev.victoryArtArr[row][col] == '~') {
+                glColor3ub(103, 177, 52); // Converted from hex 67B134
+                renderSquare(burger, j, i, dd, offy, tx, ty);
+            }
+        }
+    }
+}
+
 void renderShieldArt(Square burger, Level lev) {
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];

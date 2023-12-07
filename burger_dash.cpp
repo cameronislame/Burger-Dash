@@ -594,7 +594,7 @@ void physics()
             burger.vel[0] = enemy.vel[0];
     }
 
-    if (gl.score >= 2) {
+    if (gl.score >= 10) {
         exitSquare.active = true;
         exitSquare.pos[0] += -5.0f;
 

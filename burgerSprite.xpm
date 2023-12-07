@@ -1,0 +1,38 @@
+/* XPM */
+static char *burgerSprite[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 16 1 ",
+"  c None",
+". c #493C2B",
+"X c #F4B990",
+"o c white",
+"O c #EC4700",
+"+ c #732930",
+"@ c #BE2633",
+"# c #44891A",
+"$ c #FAB40B",
+"% c #A3CE27",
+"& c #F7E26B",
+"* c #A46422",
+"= c black",
+"- c black",
+"; c black",
+": c black",
+/* pixels */
+"    ........    ",
+"   .XXXXXXXX.   ",
+"  .XXXXXXoXXX.  ",
+" .XXXXXXXXXXXX. ",
+" .XXoXXXXXXXXo. ",
+".XXXXXXXXXXXXXX.",
+".OO++++++++OO@@.",
+".#@@########@@#.",
+".$%%%&$%%$&%%%$.",
+".++%+++$$$..%...",
+".**.****$***.**.",
+".**************.",
+".X************X.",
+" .XXXXXXXXXXXX. ",
+" .XXXXXXXXXXXX. ",
+"  ............  "
+};

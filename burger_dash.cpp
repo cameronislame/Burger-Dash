@@ -492,7 +492,8 @@ void physics()
     //hp pack physics
     hp_pack.pos[0] += hp_pack.vel[0];
     if (hp_pack.pos[0] + hp_pack.width < 0.0) {
-        hp_pack.pos[0] = oil.pos[0] + 300;
+        hp_pack.active = true;
+        hp_pack.pos[0] = oil.pos[0] + 200;
     }
     // knife physics
     knife1.pos[0] += knife1.vel[0];

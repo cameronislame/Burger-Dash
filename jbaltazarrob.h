@@ -35,7 +35,12 @@ class Level {
 };
 //Create health powerup
 extern Square hp_pack;
+//Knife obstacle
+extern Square knife1;
+extern Square knife2;
+extern Square knife3;
 void init_hpPack();
+void initObj();
 void render_calls();
 float total_render_function_calls();
 #endif

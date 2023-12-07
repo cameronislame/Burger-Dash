@@ -1,4 +1,7 @@
 #include "jbaltazarrob.h"
+#include <GL/glx.h>
+#include "cmcdaniel.h"
+#include "cestes.h"
 #include <iostream>
 #include <cstddef>
 #include <cstring>
@@ -12,6 +15,9 @@
  * CODE COMES FROM GORDON WALK2*/
 float render_val_count = 0;
 Square hp_pack;
+Square knife1;
+Square knife2;
+Square knife3;
 Level::Level() {
     //Log("Level constructor\n");
     tilesize[0] = 8;
@@ -122,4 +128,30 @@ void init_hpPack()
     hp_pack.height = 20.0;
     hp_pack.active = true;
 
+}
+void initObj()
+{
+    //initialize knives in the air
+    knife1.pos[0] = gl.xres + burger.pos[0];
+    knife1.pos[1] = gl.yres / 4.0;
+    knife1.width = 13.0;
+    knife1.vel[0] = -35;
+    knife1.height = 5.0;
+    knife1.active = true;
+
+
+    knife2.pos[0] = gl.xres + burger.pos[0] + 40;
+    knife2.pos[1] = (gl.yres / 4.0) + 20.0;
+    knife2.width = 13.0;
+    knife2.vel[0] = -35;
+    knife2.height = 5.0;
+    knife2.active = true;
+
+    knife3.pos[0] = gl.xres + burger.pos[0] + 40;
+    knife3.pos[1] = (gl.yres / 4.0) - 20.0;
+    knife3.width = 13.0;
+    knife3.vel[0] = -35;
+    knife3.height = 5.0;
+    knife3.active = true;
+    // Initialize shield power-up
 }

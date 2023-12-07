@@ -72,10 +72,6 @@ class Obstacle {
         }
 } spike;
 
-//Knife obstacle
-Obstacle knife1;
-Obstacle knife2;
-Obstacle knife3;
 //Square burger;
 
 //Declare global Level class
@@ -129,32 +125,6 @@ void waitForEnterKey(X11_wrapper &x11) {
     }
 }
 
-void initObj()
-{
-    //initialize knives in the air
-    knife1.pos[0] = gl.xres + knife1.width + 1000;
-    knife1.pos[1] = gl.yres / 4.0;
-    knife1.width = 13.0;
-    knife1.vel[0] = -35;
-    knife1.height = 5.0;
-    knife1.active = true;
-
-
-    knife2.pos[0] = gl.xres + knife2.width + 1020;
-    knife2.pos[1] = (gl.yres / 4.0) + 20.0;
-    knife2.width = 13.0;
-    knife2.vel[0] = -35;
-    knife2.height = 5.0;
-    knife2.active = true;
-
-    knife3.pos[0] = gl.xres + knife3.width + 1020;
-    knife3.pos[1] = (gl.yres / 4.0) - 20.0;
-    knife3.width = 13.0;
-    knife3.vel[0] = -35;
-    knife3.height = 5.0;
-    knife3.active = true;
-    // Initialize shield power-up
-}
 //extern bool CheckCollision2(Square burger, Enemy enemy) ;
 
 //=====================================
@@ -497,11 +467,14 @@ void physics()
     if (hp_pack.pos[0] + hp_pack.width < 0.0) {
         hp_pack.active = true;
         hp_pack.pos[0] = oil.pos[0] + 200;
+        gl.score += 1;
     }
     // knife physics
+    if(knife1.active) {
     knife1.pos[0] += knife1.vel[0];
     knife2.pos[0] += knife2.vel[0];
     knife3.pos[0] += knife3.vel[0];
+    }
     //knife collision
     if (!shieldPowerUp.isActivated()) {
         // Only apply damage if the shield is not active
@@ -509,6 +482,7 @@ void physics()
                 checkCollision(burger, knife3)) {
             if (knife1.active)
                 healthbar.health += -100;
+            initObj();
             knife1.active = false;
         }
     }
@@ -602,6 +576,8 @@ void physics()
     if (burger.pos[0] - burger.width > spike.pos[0] + spike.width && !spike.pointClaimed) {
         spike.pointClaimed = true;
         gl.score += 1;
+        if(gl.score % 2 == 0)
+            knife1.active = true;
     }
 
     if (!shieldPowerUp.isActivated()) {

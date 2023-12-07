@@ -63,7 +63,7 @@ class Obstacle {
         void init() {
             active = true;
             pointClaimed = false;
-            vel[0] = -5.0f;
+            vel[0] = lvlspeed;
             vel[1] = 0.0f;
             width =  30.0f;
             height = 30.0f;

@@ -592,9 +592,7 @@ void physics()
         exitSquare.pos[0] += lvlspeed;
 
         if (exitSquare.pos[0] + exitSquare.width < 0) {
-            std::cout << exitSquare.width;
-            std::cout << knife1.width;
-            exitSquare.pos[0] = burger.pos[0] + 2200;
+            exitSquare.pos[0] = burger.pos[0] + 1200;
         }
     }
     // if we clear the obstacle we get a point

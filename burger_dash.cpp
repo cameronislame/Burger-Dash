@@ -404,6 +404,9 @@ int X11_wrapper::check_keys(XEvent *e)
             case XK_s:
                 gl.display_statistics = !gl.display_statistics;
                 break;
+            case XK_o:
+                gl.display_options = !gl.display_options;
+                break;
         }
     }
     return 0;
@@ -587,7 +590,7 @@ void physics()
             burger.vel[0] = enemy.vel[0];
     }
 
-    if (gl.score >= 10) {
+    if (gl.score >= 20) {
         exitSquare.active = true;
         exitSquare.pos[0] += lvlspeed;
 
@@ -604,7 +607,7 @@ void physics()
     if (!shieldPowerUp.isActivated()) {
         // Only apply damage if the shield is not active
         if ((checkCollision(burger, spike) || (Check2(burger, enemy))) && !enemyCollisionOccurred) {
-            healthbar.health = healthbar.health - 20;  // Adjust the amount based on your game's design
+            healthbar.health = healthbar.health - 5;  // Adjust the amount based on your game's design
             enemyCollisionOccurred  = 1;
 
         }
@@ -620,7 +623,7 @@ void physics()
 bool shieldState;
 void render()
 {
-
+    
     for(int i = 0; i<50; i++){
         // render the level while burger is in motion
         if(burger.vel[0] >= 0.0){
@@ -636,7 +639,6 @@ void render()
     glClear(GL_COLOR_BUFFER_BIT);
     //Draw burger
 
-    renderHealth();
     renderLevel(lev, gl, camera);
     shieldState = shieldPowerUp.isActivated();
     renderBurger(burger, burgerSprite, gl, shieldState);
@@ -716,6 +718,7 @@ void render()
         renderExitArt(exitHelper, exitSprite);
 
     }
+    renderHealth();
 
 
     unsigned int c = 0x00ffff44;
@@ -724,12 +727,17 @@ void render()
     r.left = 10;
     r.center = 0;
 
-    ggprint8b(&r, 16, c, "Press SPACE to jump");
-    ggprint8b(&r, 16, c, "Press R to reset obstacle");
-    ggprint8b(&r, 16, c, "Press G for border");
-    ggprint8b(&r, 16, c, "Press C for credits");
-    ggprint8b(&r, 16, c, "Press S for statistics");
-    ggprint8b(&r, 16, c, "score: %i", gl.score);
+    if (gl.display_options) {
+        ggprint8b(&r, 16, c, "Press SPACE to jump");
+        ggprint8b(&r, 16, c, "Press R to reset obstacle");
+        ggprint8b(&r, 16, c, "Press G for border");
+        ggprint8b(&r, 16, c, "Press C for credits");
+        ggprint8b(&r, 16, c, "Press S for statistics");
+        ggprint8b(&r, 16, c, "score: %i", gl.score);
+    } else {
+        ggprint8b(&r, 16, c, "score: %i", gl.score);
+        ggprint8b(&r, 16, c, "Press O for options");
+    }       
 
     if (healthbar.health <= 0) {
         healthbar.health = 0;

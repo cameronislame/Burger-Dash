@@ -187,18 +187,28 @@ void renderHealth() {
         green = 0;
 
     }
+    healthbar.width = healthbar.health/2;
+    glPushMatrix();
+    glColor3ub(0, 0, 0);  // Green color
+    glTranslatef(healthbar.pos[0], healthbar.pos[1], 0.0f);
+    glBegin(GL_QUADS);
+    glVertex2f(0 - 5, 0 - 5);
+    glVertex2f(0 - 5, healthbar.height + 5);
+    glVertex2f(126 + 5, healthbar.height + 5);
+    glVertex2f(126 + 5, 0 - 5);
+    glEnd();
+    glPopMatrix();
 
     glPushMatrix();
     glColor3ub(red, green, 0);  // Green color
     glTranslatef(healthbar.pos[0], healthbar.pos[1], 0.0f);
     glBegin(GL_QUADS);
-    glVertex2f(-healthbar.width, -healthbar.height);
-    glVertex2f(-healthbar.width, healthbar.height);
+    glVertex2f(0, 0);
+    glVertex2f(0, healthbar.height);
     glVertex2f(healthbar.width, healthbar.height);
-    glVertex2f(healthbar.width, -healthbar.height);
+    glVertex2f(healthbar.width, 0);
     glEnd();
     glPopMatrix();
-
 
 
 }

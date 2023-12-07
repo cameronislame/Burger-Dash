@@ -70,10 +70,10 @@ class Health {
         }
         void init() {
             health = 255;
-            pos[0] = 1000.0f;
-            width = 80.0f;
-            height = 10.0f;
-            pos[1] = 500.0f + height;
+            pos[0] = 1000;
+            width = health/2;
+            height = 30.0f;
+            pos[1] = 370;
         }
 };
 

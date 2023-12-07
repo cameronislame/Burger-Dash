@@ -16,14 +16,16 @@ extern class Global {
         bool CheckCollision2;
         double delay;
         bool display_statistics;
+        bool display_options;
         time_t begin;
         time_t key_checker;
         Global() {
             show_border = false;
             display_credits = false;
             display_statistics = false;
+            display_options = false;
             xres = 1200;
-            yres = 600;
+            yres = 415;
             score = 0;
             delay = 0.1;
             time(&begin);

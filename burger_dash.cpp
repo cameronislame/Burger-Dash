@@ -589,7 +589,7 @@ void physics()
 
     if (gl.score >= 10) {
         exitSquare.active = true;
-        exitSquare.pos[0] += -5.0f;
+        exitSquare.pos[0] += lvlspeed;
 
         if (exitSquare.pos[0] + exitSquare.width < 0) {
             std::cout << exitSquare.width;

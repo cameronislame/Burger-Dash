@@ -10,7 +10,7 @@
 #ifndef _CESTES_H_
 #define _CESTES_H_
 class Global;
-
+const float lvlspeed = -8.0f;
 
 
 class Oil {
@@ -27,7 +27,7 @@ class Oil {
             height = 8.0f;
             pos[0] = 1500.0f;
             pos[1] = 1.0f;
-            vel[0] = -5.0f;
+            vel[0] = lvlspeed;
         }
 };
 
@@ -48,7 +48,7 @@ public:
         height = 32.0f * 2.5;
         pos[0] = 1200.0f;
         pos[1] = 0.0f;
-        vel[0] = -5.0f;
+        vel[0] = lvlspeed;
         //pos[0] += vel[0];
     }
 };

@@ -123,5 +123,6 @@ void renderOil();
 bool Check3(Square burger,Oil oil);
 void renderGameOver( int xres, int yres, X11_wrapper& x11, Global& gl);
 bool playOpenALSound(const char* soundFilePath);
+bool playOpenALSound1(const char* soundFilePath);
 void stopOpenALSound();
 #endif

@@ -189,6 +189,7 @@ int main() {
             }
 
             if (victory == true) {
+		stopOpenALSound();
                 glClear(GL_COLOR_BUFFER_BIT);
                 victorySquare.pos[0] = gl.xres/2 - 2.5 * 100.0f;
                 victorySquare.pos[1] = gl.yres/2 - 2.5 * 29.0f;
@@ -200,6 +201,7 @@ int main() {
             }          
         }
     }
+    
 
     return 0;
 }
@@ -459,6 +461,7 @@ void physics()
 
     // Check collision with shield power-up
     if (Check4(burger, shieldPowerUp)) {
+	playOpenALSound1("./523655__matrixxx__powerup-09.wav");
         shieldPowerUp.activate();
     }
 
@@ -496,9 +499,11 @@ void physics()
         initObj();
     }
     if (checkCollision(burger, hp_pack)) {
+	playOpenALSound1("./523655__matrixxx__powerup-09.wav");
         healthbar.health = 255;
         hp_pack.active = false;
         gl.score += 1;
+	
     }
     // burger physics
     // If burger is off the ground, it is subject to gravity
@@ -531,10 +536,11 @@ void physics()
 
     if(checkCollision(burger, spike)) {
         //spike.vel[0] = 10;
+	
 
         //burger.vel[0] = -10;
         burger.vel[1] = 0;
-
+	
     }
 
     /*if (enemy.pos[0] <= 400.0f){
@@ -720,10 +726,7 @@ void render()
         gameOver = true;
 
     }
-    if (gameOver) {
-
-
-    }
+    
 
 
     if (gl.show_border) {

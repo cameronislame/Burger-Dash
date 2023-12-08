@@ -246,8 +246,7 @@ bool playOpenALSound(const char* soundFilePath) {
     alSourcei(alSource, AL_LOOPING, AL_TRUE);
 
     // Play the sound
-    alSourcePlay(alSource);
-
+    alSourcePlay(alSource);	
     return true;
 }
 void stopOpenALSound() {
@@ -261,6 +260,47 @@ void stopOpenALSound() {
     // Cleanup ALUT
     alutExit();
 }
+
+ALuint alSource1;
+ALuint alBuffer1;
+
+bool playOpenALSound1(const char* soundFilePath) {
+
+
+    // Clear error state
+    alGetError();
+
+    // Setup the listener
+    float vec[6] = {0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f};
+    alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);
+    alListenerfv(AL_ORIENTATION, vec);
+    alListenerf(AL_GAIN, 1.0f);
+
+    // Buffer holds the sound information
+    alBuffer1 = alutCreateBufferFromFile(soundFilePath);
+
+    // Check for buffer loading errors
+    if (alGetError() != AL_NO_ERROR) {
+        printf("ERROR: loading buffer\n");
+        alutExit();
+        return false;
+    }
+
+    // Source refers to the sound
+    alGenSources(1, &alSource1);
+    alSourcei(alSource1, AL_BUFFER, alBuffer1);
+
+    // Set volume and pitch, enable looping of sound
+    alSourcef(alSource1, AL_GAIN, 1.0f);
+    alSourcef(alSource1, AL_PITCH, 1.0f);
+    alSourcei(alSource1, AL_LOOPING, AL_FALSE);
+
+    // Play the sound
+    alSourcePlay(alSource1);
+
+    return true;
+}
+
 
 // burger_dash.cpp
 

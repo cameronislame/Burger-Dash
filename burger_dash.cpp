@@ -362,6 +362,7 @@ int X11_wrapper::check_keys(XEvent *e)
                 exitSquare.pos[0] = 1000;
                 exitSquare.pos[1] = 0;
                 exitSquare.active = false;
+		gl.score = 0;
 
                 break;
             case XK_Escape:

@@ -114,7 +114,7 @@ void ShieldPowerUp::activate() {
 }
 
 bool ShieldPowerUp::isActivated() {
-    if (active && (time(nullptr) - activationTime) < 15) {
+    if (active && (time(nullptr) - activationTime) < 10) {
         return true;
     } else {
         active = false;
@@ -132,6 +132,12 @@ bool Check4(Square burger, ShieldPowerUp shieldPowerUp) {
     int rightShield = shieldPowerUp.pos[0] + shieldPowerUp.width;
     int topShield = shieldPowerUp.pos[1] - shieldPowerUp.height;
     int bottomShield = shieldPowerUp.pos[1] + shieldPowerUp.height;
+
+    int tolerance = 20;
+    leftShield -= tolerance;
+    rightShield += tolerance;
+    topShield -= tolerance;
+    bottomShield += tolerance;
 
     if (rightBurger < leftShield || rightShield < leftBurger)
         return false;

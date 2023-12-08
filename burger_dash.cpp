@@ -492,12 +492,9 @@ void physics()
     }
     if (knife1.pos[0] + knife1.width < 0.0) {
         initObj();
-    }
-    if (knife2.pos[0] + knife2.width < 0.0) {
-        initObj();
-    }
-    if (knife3.pos[0] + knife3.width < 0.0) {
-        initObj();
+        knife1.active = true;
+        knife2.active = true;
+        knife3.active = true;
     }
     if (checkCollision(burger, hp_pack)) {
 	playOpenALSound1("./523655__matrixxx__powerup-09.wav");
@@ -540,7 +537,7 @@ void physics()
 	
 
         //burger.vel[0] = -10;
-        burger.vel[1] = 0;
+        //burger.vel[1] = 0;
 	
     }
 
@@ -567,8 +564,11 @@ void physics()
     }
 
     if(Check2(burger,enemy)){
-        if (!shieldPowerUp.isActivated())
+        if (!shieldPowerUp.isActivated()) {
             burger.vel[0] = enemy.vel[0];
+            burger.vel[1] = 0;
+            healthbar.health -= 20;
+        }
     }
 
     if (gl.score >= 20) {

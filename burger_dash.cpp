@@ -586,6 +586,13 @@ void physics()
             knife1.active = true;
     }
 
+    if (burger.pos[0] - burger.width > enemy.pos[0] +enemy.width && !enemy.pointClaimed) {
+        enemy.pointClaimed = true;
+        gl.score += 1;
+        
+    }
+
+
     if (!shieldPowerUp.isActivated()) {
         // Only apply damage if the shield is not active
         if ((checkCollision(burger, spike) || (Check2(burger, enemy))) && !enemyCollisionOccurred) {

@@ -617,7 +617,7 @@ void render()
     for(int i = 0; i<50; i++){
         // render the level while burger is in motion
         if(burger.vel[0] >= 0.0){
-            camera[0] += 3.3/lev.tilesize[0] * (0.05 / gl.delay);
+            camera[0] += 2.0/lev.tilesize[0] * (0.05 / gl.delay);
             if (camera[0] < 0.0) {
                 camera[0] = 0.0;
             }

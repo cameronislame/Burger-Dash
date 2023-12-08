@@ -40,6 +40,7 @@ public:
     float vel[2];
     float width;
     float height;
+    bool pointClaimed;
     Enemy() {
         init();
     }
@@ -49,6 +50,7 @@ public:
         pos[0] = 1200.0f;
         pos[1] = 0.0f;
         vel[0] = lvlspeed;
+        pointClaimed = false;
         //pos[0] += vel[0];
     }
 };

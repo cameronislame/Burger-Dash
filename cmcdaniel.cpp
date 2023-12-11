@@ -55,7 +55,8 @@ int time_since_mouse_move(const bool get)
     return time(NULL) - mouse_timer;
 }
 
-void renderVictoryArt(Square burger, Level lev) {
+void renderVictoryArt(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -153,7 +154,8 @@ void renderVictoryArt(Square burger, Level lev) {
     }
 }
 
-void renderShieldArt(Square burger, Level lev) {
+void renderShieldArt(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -187,7 +189,8 @@ void renderShieldArt(Square burger, Level lev) {
     }
 }
 
-void renderHealth(Square burger, Level lev) {
+void renderHealth(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -221,7 +224,8 @@ void renderHealth(Square burger, Level lev) {
     }
 }
 
-void renderKnifeBlock(Square burger, Level lev) {
+void renderKnifeBlock(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -267,7 +271,8 @@ void renderKnifeBlock(Square burger, Level lev) {
     }
 }
 
-void renderTramp(Square burger, Level lev) {
+void renderTramp(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -301,7 +306,8 @@ void renderTramp(Square burger, Level lev) {
     }
 }
 
-void renderKnife(Square burger, Level lev) {
+void renderKnife(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -335,7 +341,8 @@ void renderKnife(Square burger, Level lev) {
     }
 }
 
-void renderFire(Square burger, Level lev) {
+void renderFire(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -370,7 +377,8 @@ void renderFire(Square burger, Level lev) {
 }
 
 
-void renderGameOverArt(Square burger, Level lev) {
+void renderGameOverArt(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -413,7 +421,8 @@ void renderGameOverArt(Square burger, Level lev) {
     }
 }
 
-void renderExitArt(Square burger, Level lev) {
+void renderExitArt(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -455,7 +464,8 @@ void renderExitArt(Square burger, Level lev) {
     }
 }
 
-void renderTitleArt(Square burger, Level lev) {
+void renderTitleArt(Square burger, Level lev) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -538,7 +548,8 @@ void renderTitleArt(Square burger, Level lev) {
 }
 
 
-void renderBurger(Square burger, Level lev, Global gl, bool shieldState) {
+void renderBurger(Square burger, Level lev, Global gl, bool shieldState) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
@@ -603,7 +614,8 @@ void renderBurger(Square burger, Level lev, Global gl, bool shieldState) {
 }
 
 
-void renderSquare(Square burger, int j, int i, Flt dd, Flt offy, int tx, int ty) {
+void renderSquare(Square burger, int j, int i, Flt dd, Flt offy, int tx, int ty) 
+{
     glPushMatrix();
     glTranslated((Flt)j * dd + burger.pos[0], (Flt)i * ty + offy + burger.pos[1], 0);
     glBegin(GL_QUADS);
@@ -617,7 +629,8 @@ void renderSquare(Square burger, int j, int i, Flt dd, Flt offy, int tx, int ty)
 
 
 
-void renderLevel(Level lev, Global gl, double* camera) {
+void renderLevel(Level lev, Global gl, double* camera) 
+{
     int tx = lev.tilesize[0];
     int ty = lev.tilesize[1];
     Flt dd = lev.ftsz[0];
